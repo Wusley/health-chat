@@ -23,16 +23,24 @@ export default class LoginCtrl extends Controller {
 
       if (_.isEmpty(this.code) && _.isEmpty(this.pass)) return;
 
-      console.log( 'teste ');
+
 
       Accounts.verifyPhone(this.code, this.pass, (err) => {
-        if (err) return this.handleError(err);
+
+        this.isLoggingIn = true;
+
+        this.$ionicLoading.hide();
+
+        // if (err) return this.handleError(err);
+
         this.$state.go('profile');
+
       });
+
       this.$state.go('profile');
 
       // Accounts.requestPhoneVerification(this.code, (err) => {
-      //   this.$ionicLoading.hide();
+        // this.$ionicLoading.hide();
       //   if (err) return this.handleError(err);
 
       //   console.log('confirmation');

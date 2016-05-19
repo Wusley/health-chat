@@ -4,8 +4,6 @@ export default class ConfirmationCtrl extends Controller {
   constructor() {
     super(...arguments);
 
-    console.log('teste');
-
     this.code = this.$state.params.code;
     this.pass = this.$state.params.pass;
   }
@@ -13,8 +11,6 @@ export default class ConfirmationCtrl extends Controller {
   confirm() {
 
     if (_.isEmpty(this.code) && _.isEmpty(this.pass)) return;
-
-    console.log( 'teste ');
 
     Accounts.verifyPhone(this.code, this.pass, (err) => {
       if (err) return this.handleError(err);
