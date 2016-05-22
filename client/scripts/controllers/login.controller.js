@@ -72,37 +72,9 @@ export default class LoginCtrl extends Controller {
     // confirmPopup.then((res) => {
     //   if (!res) return;
 
-<<<<<<< 6689a1410c030cbc4343adc0944891da77390593
-      this.$ionicLoading.show( {
-        template: 'Verificando conta...'
-      } );
-
-      if (_.isEmpty(this.code) && _.isEmpty(this.pass)) return;
-
-
-
-      Accounts.verifyPhone(this.code, this.pass, (err) => {
-
-        this.isLoggingIn = true;
-
-        this.$ionicLoading.hide();
-
-        // if (err) return this.handleError(err);
-
-        this.$state.go('profile');
-
-      });
-
-      this.$state.go('profile');
-
-      // Accounts.requestPhoneVerification(this.code, (err) => {
-        // this.$ionicLoading.hide();
-      //   if (err) return this.handleError(err);
-=======
     //   this.$ionicLoading.show({
     //     template: 'Sending verification code...'
     //   });
->>>>>>> Criado chat
 
     //   Accounts.requestPhoneVerification(this.phone, (err) => {
     //     this.$ionicLoading.hide();

@@ -5,11 +5,11 @@ Meteor.startup(function() {
   if (Meteor.users.find().count() != 0) return;
 
   Accounts.createUser({
-    email: 'amigo-1@gmail.com',
+    email: 'wesley@gmail.com',
     password: '123456',
     phone: '+5511984732295',
     profile: {
-      name: 'Felipe'
+      name: 'Wesley'
     }
   });
 
@@ -27,7 +27,7 @@ Meteor.startup(function() {
     password: '990990',
     phone: '+5511224987685',
     profile: {
-      name: 'Nathalia'
+      name: 'Aline'
     }
   });
 
