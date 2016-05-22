@@ -1,5 +1,4 @@
 // Libs
-import angular from 'angular';
 import 'angular-animate';
 import 'angular-meteor';
 import 'angular-meteor-auth';
@@ -7,9 +6,11 @@ import 'angular-moment';
 import 'angular-sanitize';
 import 'angular-ui-router';
 import 'ionic-scripts';
+import Angular from 'angular';
+import Loader from 'angular-ecmascript/module-loader';
+import { Meteor } from 'meteor/meteor';
 
 // Modules
-import Definer from '../definer';
 import ChatsCtrl from '../controllers/chats.controller';
 import ChatCtrl from '../controllers/chat.controller';
 import ConfirmationCtrl from '../controllers/confirmation.controller';
@@ -22,40 +23,41 @@ import CalendarFilter from '../filters/calendar.filter';
 import ChatNameFilter from '../filters/chat-name.filter';
 import ChatPictureFilter from '../filters/chat-picture.filter';
 import NewChatService from '../services/new-chat.service';
-import { RoutesConfig, RoutesRunner } from '../routes';
+import Routes from '../routes';
+
+const App = 'Whatsapp';
 
 // App
-const App = angular.module('Whatsapp', [
+Angular.module(App, [
   'angular-meteor',
   'angular-meteor.auth',
   'angularMoment',
   'ionic'
 ]);
 
-new Definer(App)
-  .define(ChatsCtrl)
-  .define(ChatCtrl)
-  .define(ConfirmationCtrl)
-  .define(LoginCtrl)
-  .define(NewChatCtrl)
-  .define(ProfileCtrl)
-  .define(SettingsCtrl)
-  .define(InputDirective)
-  .define(CalendarFilter)
-  .define(ChatNameFilter)
-  .define(ChatPictureFilter)
-  .define(NewChatService)
-  .define(RoutesConfig)
-  .define(RoutesRunner);
+new Loader(App)
+  .load(ChatsCtrl)
+  .load(ChatCtrl)
+  .load(ConfirmationCtrl)
+  .load(LoginCtrl)
+  .load(NewChatCtrl)
+  .load(ProfileCtrl)
+  .load(SettingsCtrl)
+  .load(InputDirective)
+  .load(CalendarFilter)
+  .load(ChatNameFilter)
+  .load(ChatPictureFilter)
+  .load(NewChatService)
+  .load(Routes);
 
 // Startup
 if (Meteor.isCordova) {
-  angular.element(document).on('deviceready', onReady);
+  Angular.element(document).on('deviceready', onReady);
 }
 else {
-  angular.element(document).ready(onReady);
+  Angular.element(document).ready(onReady);
 }
 
 function onReady() {
-  angular.bootstrap(document, ['Whatsapp']);
+  Angular.bootstrap(document, [App]);
 }

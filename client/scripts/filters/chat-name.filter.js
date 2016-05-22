@@ -1,6 +1,8 @@
-import { Filter } from '../entities';
+import { _ } from 'meteor/underscore';
+import { Meteor } from 'meteor/meteor';
+import { Filter } from 'angular-ecmascript/module-helpers';
 
-export default class chatName extends Filter {
+export default class ChatNameFilter extends Filter {
   filter(chat) {
     if (!chat) return;
 
@@ -11,3 +13,5 @@ export default class chatName extends Filter {
     return hasName ? otherUser.profile.name : chat.name || 'NO NAME';
   }
 }
+
+ChatNameFilter.$name = 'chatName';

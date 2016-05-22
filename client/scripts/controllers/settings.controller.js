@@ -1,4 +1,5 @@
-import { Controller } from '../entities';
+import { Meteor } from 'meteor/meteor';
+import { Controller } from 'angular-ecmascript/module-helpers';
 
 export default class SettingsCtrl extends Controller {
   logout() {
@@ -19,4 +20,4 @@ export default class SettingsCtrl extends Controller {
   }
 }
 
-SettingsCtrl.$inject = ['$scope', '$state', '$ionicPopup', '$log'];
+SettingsCtrl.$inject = ['$state', '$ionicPopup', '$log'];

@@ -1,11 +1,11 @@
-import moment from 'moment';
-import { Filter } from '../entities';
+import Moment from 'moment';
+import { Filter } from 'angular-ecmascript/module-helpers';
 
-export default class calendar extends Filter {
+export default class CalendarFilter extends Filter {
   filter(time) {
     if (!time) return;
 
-    return moment(time).calendar(null, {
+    return Moment(time).calendar(null, {
       lastDay : '[Yesterday]',
       sameDay : 'LT',
       lastWeek : 'dddd',
@@ -13,3 +13,5 @@ export default class calendar extends Filter {
     });
   }
 }
+
+CalendarFilter.$name = 'calendar';

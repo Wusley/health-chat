@@ -1,26 +1,42 @@
-import moment from 'moment';
+import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 
 Meteor.startup(function() {
   if (Meteor.users.find().count() != 0) return;
 
-  Accounts.createUserWithPhone({
-    phone: '+972501234567',
+  Accounts.createUser({
+    email: 'amigo-1@gmail.com',
+    password: '123456',
+    phone: '+5511984732295',
     profile: {
-      name: 'My friend 1'
+      name: 'Felipe'
     }
   });
 
-  Accounts.createUserWithPhone({
-    phone: '+972501234568',
+  Accounts.createUser({
+    email: 'amigo-2@gmail.com',
+    password: '654321',
+    phone: '+5511987846722',
     profile: {
-      name: 'My friend 2'
+      name: 'Ana'
     }
   });
 
-  Accounts.createUserWithPhone({
-    phone: '+972501234569',
+  Accounts.createUser({
+    email: 'amigo-3@gmail.com',
+    password: '990990',
+    phone: '+5511224987685',
     profile: {
-      name: 'My friend 3'
+      name: 'Nathalia'
+    }
+  });
+
+  Accounts.createUser({
+    email: 'amigo-4@gmail.com',
+    password: '6763672',
+    phone: '+5511974590968',
+    profile: {
+      name: 'Jonas'
     }
   });
 });

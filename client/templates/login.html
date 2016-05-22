@@ -1,6 +1,6 @@
 <ion-view title="Login">
   <ion-nav-buttons side="right">
-    <button ng-click="logger.login()" ng-disabled="!logger.code || logger.code.length === 0 || !logger.pass || logger.pass.length === 0" class="button button-clear button-positive">Conectar</button>
+    <button ng-click="logger.login()" ng-disabled="!logger.username || logger.username.length === 0 || !logger.password || logger.password.length === 0" class="button button-clear button-positive">Conectar</button>
   </ion-nav-buttons>
   <ion-content class="login">
     <div class="text-center instructions">
@@ -8,10 +8,10 @@
     </div>
     <div class="list">
       <label class="item item-input">
-        <input ng-model="logger.code" on-return="logger.login()" type="text" placeholder="Código">
+        <input ng-model="logger.username" on-return="logger.login()" type="text" placeholder="Código">
       </label>
       <label class="item item-input">
-        <input ng-model="logger.pass" on-return="logger.login()" type="password" placeholder="Senha">
+        <input ng-model="logger.password" on-return="logger.login()" type="password" placeholder="Senha">
       </label>
     </div>
   </ion-content>

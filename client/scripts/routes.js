@@ -1,6 +1,8 @@
-import { Config, Runner } from './entities';
+import { _ } from 'meteor/underscore';
+import { Meteor } from 'meteor/meteor';
+import { Config, Runner } from 'angular-ecmascript/module-helpers';
 
-export class RoutesConfig extends Config {
+class RoutesConfig extends Config {
   constructor() {
     super(...arguments);
 
@@ -74,7 +76,9 @@ export class RoutesConfig extends Config {
   }
 }
 
-export class RoutesRunner extends Runner {
+RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+class RoutesRunner extends Runner {
   run() {
     this.$rootScope.$on('$stateChangeError', (...args) => {
       const err = _.last(args);
@@ -86,5 +90,6 @@ export class RoutesRunner extends Runner {
   }
 }
 
-RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 RoutesRunner.$inject = ['$rootScope', '$state'];
+
+export default [RoutesConfig, RoutesRunner];

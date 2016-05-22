@@ -1,12 +1,16 @@
-import ionic from 'ionic-scripts';
-import { Controller } from '../entities';
+import Ionic from 'ionic-scripts';
+import { _ } from 'meteor/underscore';
+import { Meteor } from 'meteor/meteor';
+import { MeteorCameraUI } from 'meteor/okland:camera-ui';
+import { Controller } from 'angular-ecmascript/module-helpers';
+import { Chats, Messages } from '../../../lib/collections';
 
 export default class ChatCtrl extends Controller {
   constructor() {
     super(...arguments);
 
     this.chatId = this.$stateParams.chatId;
-    this.isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
+    this.isIOS = Ionic.Platform.isWebView() && Ionic.Platform.isIOS();
     this.isCordova = Meteor.isCordova;
 
     this.helpers({
@@ -50,9 +54,7 @@ export default class ChatCtrl extends Controller {
       this.keyboardHeight = 216;
     }
 
-    this.$timeout(() => {
-      this.$ionicScrollDelegate.$getByHandle('chatScroll').scrollBottom(true);
-    }, 300);
+    this.scrollBottom(true);
   }
 
   inputDown () {
@@ -76,9 +78,14 @@ export default class ChatCtrl extends Controller {
       const currMessagesNum = this.getCollectionReactively('messages').length;
       const animate = recentMessagesNum != currMessagesNum;
       recentMessagesNum = currMessagesNum;
-
-      this.$ionicScrollDelegate.$getByHandle('chatScroll').scrollBottom(animate);
+      this.scrollBottom(animate);
     });
+  }
+
+  scrollBottom(animate) {
+    this.$timeout(() => {
+      this.$ionicScrollDelegate.$getByHandle('chatScroll').scrollBottom(animate);
+    }, 300);
   }
 
   handleError(err) {
@@ -93,4 +100,4 @@ export default class ChatCtrl extends Controller {
   }
 }
 
-ChatCtrl.$inject = ['$scope', '$stateParams', '$timeout', '$ionicScrollDelegate', '$ionicPopup', '$log'];
+ChatCtrl.$inject = ['$stateParams', '$timeout', '$ionicScrollDelegate', '$ionicPopup', '$log'];

@@ -1,8 +1,12 @@
-import { Controller } from '../entities';
+import { _ } from 'meteor/underscore';
+import { MeteorCameraUI } from 'meteor/okland:camera-ui';
+import { Controller } from 'angular-ecmascript/module-helpers';
 
 export default class ProfileCtrl extends Controller {
   constructor() {
     super(...arguments);
+
+    console.log( 'profile');
 
     const profile = this.currentUser && this.currentUser.profile;
     this.name = profile ? profile.name : '';
@@ -44,4 +48,4 @@ export default class ProfileCtrl extends Controller {
   }
 }
 
-ProfileCtrl.$inject = ['$scope', '$state', '$ionicPopup', '$log'];
+ProfileCtrl.$inject = ['$state', '$ionicPopup', '$log'];

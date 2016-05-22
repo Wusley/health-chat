@@ -1,6 +1,6 @@
-import { Service } from '../entities';
+import { Service } from 'angular-ecmascript/module-helpers';
 
-export default class NewChat extends Service {
+export default class NewChatService extends Service {
   constructor() {
     super(...arguments);
 
@@ -25,4 +25,5 @@ export default class NewChat extends Service {
   }
 }
 
-NewChat.$inject = ['$rootScope', '$ionicModal'];
+NewChatService.$name = 'NewChat';
+NewChatService.$inject = ['$rootScope', '$ionicModal'];
