@@ -6,7 +6,7 @@ import { Controller } from 'angular-ecmascript/module-helpers';
 export default class LoginCtrl extends Controller {
   login() {
 
-    if ( _.isEmpty(this.username) || _.isEmpty(this.password) ) return;
+    if( _.isEmpty(this.username) || _.isEmpty(this.password) ) return;
 
     this.$ionicLoading.show( {
       template: 'Autenticando usuário...'
