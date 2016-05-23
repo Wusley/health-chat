@@ -6,82 +6,22 @@ import { Controller } from 'angular-ecmascript/module-helpers';
 export default class LoginCtrl extends Controller {
   login() {
 
-    // var user = Meteor.users.find().fetch()[3];
+    if ( _.isEmpty(this.username) || _.isEmpty(this.password) ) return;
 
-    // console.log( Meteor.users.find().fetch()[3] );
+    this.$ionicLoading.show( {
+      template: 'Autenticando usuário...'
+    } );
 
-    // var username = 'wusley',
-    //     password = '123456';
+    Meteor.loginWithPassword( this.username, this.password, ( err ) => {
 
-        // this.profile = user.profile;
-        // this.currentUser = user;
-        // this.currentUserId = user._id;
+      this.$ionicLoading.hide();
 
-        // var acc = {
-        //     email: 'contato@wesley.pro.br',
-        //     password: '123456',
-        //     phone: '+5511997974380',
-        //     profile: {
-        //       name: 'wusley'
-        //     }
-        //   };
+      if (err) return this.handleError(err);
 
-        //   console.log( acc );
+      this.$state.go('profile');
 
-        // Accounts.createUser( acc, (err) => { console.log(err); });
+    } );
 
-        // Meteor.loginWithPassword( 'contato@wesley.pro.br', '123456', ( data ) => {
-        //   console.log( data );
-        //   this.$state.go('profile');
-
-        // } );
-
-        this.$ionicLoading.show( {
-          template: 'Autenticando usuário...'
-        } );
-
-        Meteor.loginWithPassword( this.username, this.password, ( err ) => {
-
-          this.$ionicLoading.hide();
-
-          if (err) return this.handleError(err);
-
-          this.$state.go('profile');
-
-        } );
-
-        // Meteor.loginWithPassword( user._id, user.profile.password, ( data ) => {
-        //   console.log( data );
-        // } );
-
-
-
-
-    // if (_.isEmpty(this.phone)) return;
-
-    // const confirmPopup = this.$ionicPopup.confirm({
-    //   title: 'Number confirmation',
-    //   template: '<div>' + this.phone + '</div><div>Is your phone number above correct?</div>',
-    //   cssClass: 'text-center',
-    //   okText: 'Yes',
-    //   okType: 'button-positive button-clear',
-    //   cancelText: 'edit',
-    //   cancelType: 'button-dark button-clear'
-    // });
-
-    // confirmPopup.then((res) => {
-    //   if (!res) return;
-
-    //   this.$ionicLoading.show({
-    //     template: 'Sending verification code...'
-    //   });
-
-    //   Accounts.requestPhoneVerification(this.phone, (err) => {
-    //     this.$ionicLoading.hide();
-    //     if (err) return this.handleError(err);
-    //     this.$state.go('confirmation', { phone: this.phone });
-    //   });
-    // });
   }
 
   handleError(err) {

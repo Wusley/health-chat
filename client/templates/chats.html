@@ -1,4 +1,4 @@
-<ion-view view-title="Chats">
+<ion-view view-title="Conversas">
   <ion-nav-buttons side="right">
     <button ng-click="chats.showNewChatModal()" class="button button-clear button-positive button-icon ion-ios-compose-outline"></button>
   </ion-nav-buttons>
@@ -13,12 +13,12 @@
         <h2>{{ chat | chatName }}</h2>
         <ng-switch on="chat.lastMessage.type">
           <p ng-switch-when="text">{{ chat.lastMessage.text }}</p>
-          <p ng-switch-when="picture">image</p>
+          <p ng-switch-when="picture">Imagem</p>
         </ng-switch>
         <span class="last-message-timestamp">{{ chat.lastMessage.timestamp | calendar }}</span>
         <i class="icon ion-chevron-right icon-accessory"></i>
         <ion-option-button class="button-assertive" ng-click="chats.remove(chat)">
-          Delete
+          Remover
         </ion-option-button>
       </ion-item>
     </ion-list>

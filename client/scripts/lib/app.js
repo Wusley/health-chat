@@ -25,7 +25,7 @@ import ChatPictureFilter from '../filters/chat-picture.filter';
 import NewChatService from '../services/new-chat.service';
 import Routes from '../routes';
 
-const App = 'Whatsapp';
+const App = 'Healp Chat';
 
 // App
 Angular.module(App, [

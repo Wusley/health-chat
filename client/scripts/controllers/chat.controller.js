@@ -90,11 +90,11 @@ export default class ChatCtrl extends Controller {
 
   handleError(err) {
     if (err.error == 'cancel') return;
-    this.$log.error('Profile save error ', err);
+    this.$log.error('Falha ao salvar o perfil ', err);
 
     this.$ionicPopup.alert({
-      title: err.reason || 'Save failed',
-      template: 'Please try again',
+      title: err.reason || 'Falha ao salvar',
+      template: 'Por favor tente novamente',
       okType: 'button-positive button-clear'
     });
   }

@@ -10,11 +10,11 @@ export default class SettingsCtrl extends Controller {
   }
 
   handleError (err) {
-    this.$log.error('Settings modification error', err);
+    this.$log.error('Falha ao salvar as configurações', err);
 
     this.$ionicPopup.alert({
-      title: err.reason || 'Settings modification failed',
-      template: 'Please try again',
+      title: err.reason || 'Falha ao salvar as configurações',
+      template: 'Por favor tente novamente',
       okType: 'button-positive button-clear'
     });
   }

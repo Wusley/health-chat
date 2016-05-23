@@ -6,8 +6,6 @@ export default class ProfileCtrl extends Controller {
   constructor() {
     super(...arguments);
 
-    console.log( 'profile');
-
     const profile = this.currentUser && this.currentUser.profile;
     this.name = profile ? profile.name : '';
   }
@@ -17,7 +15,7 @@ export default class ProfileCtrl extends Controller {
       if (err) return this.handleError(err);
 
       this.$ionicLoading.show({
-        template: 'Updating picture...'
+        template: 'Atualizando imagem...'
       });
 
       this.callMethod('updatePicture', data, (err) => {
@@ -38,11 +36,11 @@ export default class ProfileCtrl extends Controller {
 
   handleError(err) {
     if (err.error == 'cancel') return;
-    this.$log.error('Profile save error ', err);
+    this.$log.error('Falha ao salvar o perfil ', err);
 
     this.$ionicPopup.alert({
-      title: err.reason || 'Save failed',
-      template: 'Please try again',
+      title: err.reason || 'Falha ao salvar o perfil',
+      template: 'Por favor tente novamente',
       okType: 'button-positive button-clear'
     });
   }

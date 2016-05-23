@@ -39,11 +39,11 @@ export default class NewChatCtrl extends Controller {
   }
 
   handleError(err) {
-    this.$log.error('New chat creation error ', err);
+    this.$log.error('Falha ao criar nova conversa ', err);
 
     this.$ionicPopup.alert({
-      title: err.reason || 'New chat creation failed',
-      template: 'Please try again',
+      title: err.reason || 'Falha ao criar nova conversa',
+      template: 'Por favor tente novamente',
       okType: 'button-positive button-clear'
     });
   }
